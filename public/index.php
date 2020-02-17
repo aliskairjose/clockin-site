@@ -1,5 +1,12 @@
 <?php
 
+// permite peticiones desde cualquier origen
+header('Access-Control-Allow-Origin: *');
+// permite peticiones con métodos GET, PUT, POST, DELETE y OPTIONS
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+// permite los headers Content-Type y Authorization
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -21,7 +28,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +42,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
