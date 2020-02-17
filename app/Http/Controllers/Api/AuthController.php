@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User as UserResource;
+use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -27,6 +29,9 @@ class  AuthController extends Controller
                     ]
                 );
             }
+
+            $data = new UserResource((User::where('email', $request->get('email')))->firstOrFail());
+
         } catch (JWTException $e) {
             return response()->json(['error' => 'Could not create token'], 500);
         } catch (Exception $e) {
@@ -43,6 +48,7 @@ class  AuthController extends Controller
             [
                 'isSuccess' => true,
                 'token'     => $token,
+                'objects'    => $data
             ]
         );
     }
