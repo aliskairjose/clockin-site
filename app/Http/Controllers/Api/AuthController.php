@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\User;
+use App\Http\Resources\User as UserResource;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
+class  AuthController extends Controller
+{
+
+    public function login(Request $request)
+    {
+
+        $credentials = $request->only('email', 'password');
+        $token = null;
+
+        try {
+            if (!$token = JWTAuth::attempt($credentials)) {
+                return response()->json(
+                    [
+                        'isSuccess' => false,
+                        'status'    => 401,
+                        'message'   => 'La combinación de inicio de sesión / correo electrónico no es correcta, intente nuevamente.',
+                    ]
+                );
+            } else {
+            }
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'Could not create token'], 500);
+        }
+
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'token'     => $token,
+            ]
+        );
+    }
+
+    public function logout(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+
+        try {
+            JWTAuth::invalidate($request->token);
+            return response()->json([
+                'status'  => 'ok',
+                'message' => 'Cierre de sesión exitoso.'
+            ]);
+        } catch (JWTException  $exception) {
+            return response()->json([
+                'status'  => 'unknown_error',
+                'message' => 'Al usuario no se le pudo cerrar la sesión.'
+            ], 500);
+        }
+    }
+
+    public function getAuthUser(Request $request)
+    {
+        $this->validate($request, [
+            'token' => 'required'
+        ]);
+
+        $user = JWTAuth::authenticate($request->token);
+        return response()->json(['user' => $user]);
+    }
+
+}
