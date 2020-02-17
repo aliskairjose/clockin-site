@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Http\Resources\User as UserResource;
+use Exception;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use JWTAuth;
 
 class  AuthController extends Controller
 {
@@ -27,12 +26,18 @@ class  AuthController extends Controller
                         'message'   => 'La combinación de inicio de sesión / correo electrónico no es correcta, intente nuevamente.',
                     ]
                 );
-            } else {
             }
         } catch (JWTException $e) {
             return response()->json(['error' => 'Could not create token'], 500);
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status'    => 400,
+                    'message'   => 'Ha ocurrido un error.',
+                ]
+            );
         }
-
 
         return response()->json(
             [
@@ -72,4 +77,19 @@ class  AuthController extends Controller
         return response()->json(['user' => $user]);
     }
 
+    public function getAuthenticatedUser()
+    {
+        try {
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+            return response()->json(['token_expired'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+            return response()->json(['token_invalid'], $e->getStatusCode());
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+            return response()->json(['token_absent'], $e->getStatusCode());
+        }
+        return response()->json(compact('user'));
+    }
 }
