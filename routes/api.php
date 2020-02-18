@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::post('login', 'Api\AuthController@login')->name('login');
+Route::post('register', 'Api\RegisterController@register')->name('register');
+Route::post('password/email', 'Api\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('password.reset');
+
 
 // Route::group(['middleware' => ['jwt.verify']], function() {
     /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT*/
