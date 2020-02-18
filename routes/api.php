@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', 'Api\AuthController@login')->name('login');
 
-Route::group(['middleware' => ['jwt.verify']], function() {
+// Route::group(['middleware' => ['jwt.verify']], function() {
     /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT*/
-});
+
+    Route::get('users', 'Api\UserController@index');
+// });

@@ -10,7 +10,7 @@ use App\User;
 use Exception;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use JWTAuth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class  AuthController extends Controller
 {

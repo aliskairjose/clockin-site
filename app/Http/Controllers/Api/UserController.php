@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Resources\User as UserResource;
+use App\Http\Resources\UserCollection;
 use App\User;
 
 class UserController extends Controller
@@ -19,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
         try{
-            $data = new UserResource(User::all());
+            $data = new UserCollection(User::all());
         }
         catch(Exception $e){
             return response()->json(
