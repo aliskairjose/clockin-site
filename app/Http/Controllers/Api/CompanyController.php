@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Company;
 use App\Http\Resources\CompanyCollection;
 use App\Http\Resources\Company as CompanyResource;
@@ -23,7 +24,7 @@ class CompanyController extends Controller
         } catch (Exception $e) {
             return  response()->json(
                 [
-                    'isSuccess' => true,
+                    'isSuccess' => false,
                     'status' => 400,
                     'error' => $e,
                     'message' => 'Ha ocurrido un error'
@@ -63,7 +64,7 @@ class CompanyController extends Controller
         } catch (Exception $e) {
             return response()->json(
                 [
-                    'isSuccess' => true,
+                    'isSuccess' => false,
                     'status' => 400,
                     'error' => $e,
                     'message' => 'Ha ocurrido un error'
