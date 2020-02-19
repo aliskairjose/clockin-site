@@ -17,17 +17,17 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone',20)->unique()->nullable();
+            $table->string('password')->nullable(true);
+            $table->string('phone', 20)->unique()->nullable();
             $table->unsignedSmallInteger('country_id')->nullable();
-            $table->string('postcode')->nullable();
-            $table->string('picture')->nullable();
-            $table->rememberToken();
+            $table->string('postcode')->nullable(true);
+            $table->string('picture')->nullable(true);
+            // $table->rememberToken();
             $table->boolean('blocked')->default(0);
             $table->boolean('active')->default(1);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('phone_verified_at')->nullable();
-            $table->timestamp('last_login')->nullable();
+            $table->timestamp('email_verified_at')->nullable(true);
+            $table->timestamp('phone_verified_at')->nullable(true);
+            $table->timestamp('last_login')->nullable(true);
             $table->timestamps();
         });
     }

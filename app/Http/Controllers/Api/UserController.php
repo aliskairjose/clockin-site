@@ -10,6 +10,7 @@ use App\Http\Resources\User as UserResource;
 use App\Http\Resources\UserCollection;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -22,10 +23,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        try{
+        try {
             $data = new UserCollection(User::all());
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
@@ -33,7 +33,7 @@ class UserController extends Controller
                     'error'     => $e,
                     'message'   => 'Ha ocurrido un error inesperado'
                 ]
-                );
+            );
         }
         return response()->json(
             [
@@ -41,7 +41,7 @@ class UserController extends Controller
                 'status'    => 200,
                 'objects'   => $data
             ]
-            );
+        );
     }
 
     /**
@@ -62,22 +62,33 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+         try {
             $password = Str::random(10);
 
             $data = User::create(
                 [
-                    'name' => $this->name,
-                    'email' => $this->email,
-                    'password' => Hash::make($password),
-                    'phone' => $this->phone,
-                    'country_id' => $this->country_id,
-                    'postcode' => $this->postcode,
-                    'picture' => $this->picture,
-                    'role_id' => $this->role_id
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make("alliskair25"),
+                    'phone' => $request->phone,
+                    'country_id' => $request->country_id,
+                    'postcode' => $request->postcode,
+                    'picture' => $request->picture,
+                    'role_id' => $request->role_id
                 ]
             );
-        } catch (Exception $e) {
+        }
+        catch (QueryException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e->errorInfo[2],
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        }
+        catch (Exception $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
