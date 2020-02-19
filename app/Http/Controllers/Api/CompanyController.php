@@ -99,14 +99,13 @@ class CompanyController extends Controller
                     'message' => 'Ha ocurrido un error'
                 ]
             );
-        }
-        catch ( ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return response()->json(
                 [
                     'isSuccess' => true,
                     'status' => 200,
                     'error' => $e,
-                    'message' => 'No se encontro registro con id '.$id
+                    'message' => 'No se encontro registro con id ' . $id
                 ]
             );
         }
@@ -117,7 +116,7 @@ class CompanyController extends Controller
                 'status' => 200,
                 'objects' => $data
             ]
-        )
+        );
     }
 
     /**
@@ -140,26 +139,24 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try{
+        try {
             Company::findOrFail($id)->update($request);
-        }
-        catch( Exception $e){
+        } catch (Exception $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
                     'status' => 400,
-                    'error' =>$e,
+                    'error' => $e,
                     'message' => 'Ha ocurrido un error'
                 ]
             );
-        }
-        catch( ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return response()->json(
                 [
                     'isSuccess' => true,
                     'status' => 200,
                     'error' => $e,
-                    'message' => 'No se encontro registro con id '.$id
+                    'message' => 'No se encontro registro con id ' . $id
                 ]
             );
         }
@@ -181,10 +178,9 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        try{
+        try {
             Company::findOrFail($id)->delete();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
@@ -192,15 +188,14 @@ class CompanyController extends Controller
                     'error' => $e,
                     'message' => 'Ha ocurrido un error'
                 ]
-                );
-        }
-        catch( ModelNotFoundException $e){
+            );
+        } catch (ModelNotFoundException $e) {
             return response()->json(
                 [
                     'isSuccess' => true,
                     'status' => 200,
                     'error' => $e,
-                    'message' => 'No se encontro registro con id '.$id
+                    'message' => 'No se encontro registro con id ' . $id
                 ]
             );
         }

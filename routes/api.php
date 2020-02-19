@@ -27,10 +27,17 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
     Route::get('users', 'Api\UserController@index');
 
     // Company Route
-    Route::get('companies', 'CompanyController@edit');
+    Route::get('companies', 'CompanyController@index');
     Route::get('companies/{id}', 'CompanyController@show');
     Route::post('companies','CompanyController@store');
     Route::put('companies/{id}','CompanyController@update');
-    Route::delete('companies/{id}', 'CompanyController@create');
+    Route::delete('companies/{id}', 'CompanyController@destroy');
+
+    // WorkShift Routes
+    Route::get('workshifts', 'WorkshiftController@index');
+    Route::get('workshifts/{id}', 'WorkshiftController@show');
+    Route::post('workshifts','WorkshiftController@store');
+    Route::put('workshifts/{id}','WorkshiftController@update');
+    Route::delete('workshifts/{id}', 'WorkshiftController@destroy');
 
 // });
