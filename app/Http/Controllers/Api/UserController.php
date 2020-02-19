@@ -69,7 +69,7 @@ class UserController extends Controller
                 [
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => Hash::make("alliskair25"),
+                    'password' => Hash::make("aliskair25"),
                     'phone' => $request->phone,
                     'country_id' => $request->country_id,
                     'postcode' => $request->postcode,
