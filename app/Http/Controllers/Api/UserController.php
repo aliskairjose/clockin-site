@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\User as UserResource;
 use App\Http\Resources\UserCollection;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserController extends Controller
 {
@@ -59,7 +60,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $data = User::create($request->all());
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'objects' => $data
+            ]
+        );
     }
 
     /**
@@ -70,7 +90,35 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $data = new UserResource(User::findOrFail($id));
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => true,
+                    'status' => 200,
+                    'error' => $e,
+                    'message' => 'No se encontro registro con id ' . $id
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'objects' => $data
+            ]
+        );
     }
 
     /**
@@ -93,7 +141,35 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            User::findOrFail($id)->update($request);
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => true,
+                    'status' => 200,
+                    'error' => $e,
+                    'message' => 'No se encontro registro con id ' . $id
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'message' => 'El registro ha sido actualizado'
+            ]
+        );
     }
 
     /**
@@ -104,6 +180,34 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            Company::findOrFail($id)->delete();
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => true,
+                    'status' => 200,
+                    'error' => $e,
+                    'message' => 'No se encontro registro con id ' . $id
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'message' => 'El registro ha sido eliminado'
+            ]
+        );
     }
 }
