@@ -14,6 +14,12 @@ class ClockRecording extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'type'        => $this->type,
+            'ip'          => $this->ip,
+            'lat'         => $this->lat,
+            'lon'         => $this->lon,
+            'device_name' => $this->device_name
+        ];
     }
 }
