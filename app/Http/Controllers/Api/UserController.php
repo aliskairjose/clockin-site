@@ -10,6 +10,8 @@ use App\Http\Resources\User as UserResource;
 use App\Http\Resources\UserCollection;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -61,7 +63,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = User::create($request->all());
+            $password = Str::random(10);
+
+            $data = User::create(
+                [
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'password' => Hash::make($password),
+                    'phone' => $this->phone,
+                    'country_id' => $this->country_id,
+                    'postcode' => $this->postcode,
+                    'picture' => $this->picture,
+                    'role_id' => $this->role_id
+                ]
+            );
         } catch (Exception $e) {
             return response()->json(
                 [
@@ -181,7 +196,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            Company::findOrFail($id)->delete();
+            User::findOrFail($id)->delete();
         } catch (Exception $e) {
             return response()->json(
                 [

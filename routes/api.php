@@ -25,10 +25,10 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
 
     // Users Routes
     Route::get('users', 'Api\UserController@index');
-    Route::get('user/{id}', 'UserController@show');
-    Route::post('user', 'UserController@store');
-    Route::put('user/{id}', 'UserController@update');
-    Route::delete('user/{id}', 'UserController@destroy');
+    Route::get('users/{id}', 'Api\UserController@show');
+    Route::post('users', 'Api\UserController@store');
+    Route::put('users/{id}', 'Api\UserController@update');
+    Route::delete('users/{id}', 'Api\UserController@destroy');
 
     // Company Route
     Route::get('companies', 'Api\CompanyController@index');
