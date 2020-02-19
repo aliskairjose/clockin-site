@@ -23,5 +23,13 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
 // Route::group(['middleware' => ['jwt.verify']], function() {
     /*AÑADE AQUI LAS RUTAS QUE QUIERAS PROTEGER CON JWT*/
 
+    // Users Routes
     Route::get('users', 'Api\UserController@index');
+
+    // Company Route
+    Route::get('companies', 'CompanyController@edit');
+    Route::get('companies/{id}', 'CompanyController@show');
+    Route::post('companies','CompanyController@store');
+    Route::put('companies/{id}','CompanyController@update');
+    Route::delete('companies/{id}', 'CompanyController@create');
 // });
