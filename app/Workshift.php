@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class Workshift extends Model
+class WorkShift extends Model
 {
     use Notifiable;
 
