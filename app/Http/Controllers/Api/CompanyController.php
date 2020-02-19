@@ -60,7 +60,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = Company::creat($request->all());
+            $data = Company::create($request->all());
         } catch (Exception $e) {
             return response()->json(
                 [

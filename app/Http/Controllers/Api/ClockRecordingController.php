@@ -60,7 +60,7 @@ class ClockRecordingController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = ClockRecording::creat($request->all());
+            $data = ClockRecording::create($request->all());
         } catch (Exception $e) {
             return response()->json(
                 [

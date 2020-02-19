@@ -60,7 +60,7 @@ class WorkShiftController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = WorkShift::creat($request->all());
+            $data = WorkShift::create($request->all());
         } catch (Exception $e) {
             return response()->json(
                 [
