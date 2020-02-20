@@ -33,6 +33,7 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
     // Company Route
     Route::get('companies', 'Api\CompanyController@index');
     Route::get('companies/{id}', 'Api\CompanyController@show');
+    Route::get('companies/employees/{id}', 'Api\CompanyController@employees');
     Route::post('companies','Api\CompanyController@store');
     Route::put('companies/{id}','Api\CompanyController@update');
     Route::delete('companies/{id}', 'Api\CompanyController@destroy');

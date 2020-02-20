@@ -10,4 +10,6 @@ class Role extends Model
     use Notifiable;
 
     protected $fillable = ['name', 'guard_name'];
+
+
 }

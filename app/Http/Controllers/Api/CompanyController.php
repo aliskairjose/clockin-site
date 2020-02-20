@@ -209,4 +209,45 @@ class CompanyController extends Controller
             ]
         );
     }
+
+    /**
+     * Muestra la lista de usuarios de la empresa
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function employees($id)
+    {
+
+        try {
+            $company = Company::findOrFail($id);
+            $data = $company->users;
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => true,
+                    'status' => 200,
+                    'error' => $e,
+                    'message' => 'No se encontro registro con id ' . $id
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'objects' => $data
+            ]
+        );
+    }
 }

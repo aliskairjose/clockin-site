@@ -11,6 +11,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Illuminate\Support\Arr;
 
 class  AuthController extends Controller
 {
@@ -26,7 +27,7 @@ class  AuthController extends Controller
                 return response()->json(
                     [
                         'isSuccess' => false,
-                        'status'    => 401,
+                        'status'    => 400,
                         'message'   => 'La combinación de inicio de sesión / correo electrónico no es correcta, intente nuevamente.',
                     ]
                 );
@@ -34,6 +35,20 @@ class  AuthController extends Controller
 
             $data = new UserResource((User::where('email', $request->get('email')))->firstOrFail());
 
+            $company_ids = [];
+            foreach ($data->companies as $value) {
+                array_push($company_ids, $value->id);
+            }
+
+            if (array_search($request->company, $company_ids) === false) {
+                return response()->json(
+                    [
+                        'isSuccess' => false,
+                        'status'    => 401,
+                        'message'   => 'Empleado no pertenece a la empresa selecionada.',
+                    ]
+                );
+            }
         } catch (JWTException $e) {
             return response()->json(['error' => 'Could not create token'], 500);
         } catch (Exception $e) {

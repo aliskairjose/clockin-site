@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Company;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
@@ -79,7 +80,7 @@ class UserController extends Controller
             );
 
             // agregamos al usuario recien creado a la tabla pivote company_user
-            if($request->role_id === 3){
+            if($request->role_id !== 1){
                 $data->companies()->attach($request->company_id);
             }
 
