@@ -20,6 +20,7 @@ class User extends JsonResource
             'email'             => $this->email,
             'phone'             => $this->phone,
             'country_id'        => $this->country_id,
+            'role   '           => new \App\Http\Resources\Role($this->role),
             'postcode'          => $this->poscode,
             'picture'           => $this->picture,
             'blocked'           => $this->blocked,

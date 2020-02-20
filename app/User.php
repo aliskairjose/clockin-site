@@ -47,4 +47,22 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    /**
+     * Relacion mucho a muchos con Company
+     */
+
+     public function companies()
+     {
+         return $this->belongsToMany(Company::class);
+     }
+
+    /**
+     * Relacion uno a uno con Roles
+     */
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
 }

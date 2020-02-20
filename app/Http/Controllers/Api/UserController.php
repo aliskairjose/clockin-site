@@ -77,6 +77,9 @@ class UserController extends Controller
                     'role_id' => $request->role_id
                 ]
             );
+
+            // agregamos al usuario recien creado a la tabla pivote company_user
+            $data->companies()->attach($request->company_id);
         }
         catch (QueryException $e) {
             return response()->json(
