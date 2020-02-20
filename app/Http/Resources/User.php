@@ -20,13 +20,13 @@ class User extends JsonResource
             'email'             => $this->email,
             'phone'             => $this->phone,
             'country_id'        => $this->country_id,
-            'role   '           => new \App\Http\Resources\Role($this->role),
+            'role'           => new \App\Http\Resources\Role($this->role),
             'postcode'          => $this->poscode,
             'picture'           => $this->picture,
             'blocked'           => $this->blocked,
             'active'            => $this->active,
-            'email_verified_at' =>$this->email_verified_at,
-            'phone_verified_at' => $this->phone_verified_at,
+            // 'email_verified_at' =>$this->email_verified_at,
+            // 'phone_verified_at' => $this->phone_verified_at,
             'last_login'        => $this->last_login
         ];
     }
