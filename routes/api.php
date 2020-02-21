@@ -46,4 +46,11 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
     Route::put('workshifts/{id}','Api\WorkshiftController@update');
     Route::delete('workshifts/{id}', 'Api\WorkshiftController@destroy');
 
+    // Clock Recordin Routes
+    Route::get('clockrecordings', 'Api\ClockRecordingController@index');
+    Route::get('clockrecordings/{id}', 'Api\ClockRecordingController@show');
+    Route::post('clockrecordings','Api\ClockRecordingController@store');
+    Route::put('clockrecordings/{id}','\Api\ClockRecordingController@update');
+    Route::delete('clockrecordings/{id}', 'Api\ClockRecordingController@destroy');
+
 // });
