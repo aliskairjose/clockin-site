@@ -28,7 +28,7 @@ class User extends JsonResource
             // 'phone_verified_at' => $this->phone_verified_at,
             'last_login'        => $this->last_login,
             'role'              => new \App\Http\Resources\Role($this->role),
-            'companyies'        => $this->companies,
+            'companies'        => new CompanyCollection($this->companies),
         ];
     }
 }

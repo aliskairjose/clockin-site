@@ -18,6 +18,12 @@ class Company extends JsonResource
             'id'         => $this->id,
             'name'       => $this->name,
             'decription' => $this->description,
+            'phone'      => $this->phone,
+            'email'      => $this->email,
+            'address'    => $this->address,
+            'picture'    => $this->picture,
+            'country_id' => $this->country_id,
+
         ];
     }
 }

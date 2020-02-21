@@ -12,7 +12,7 @@ class CountriesSeed extends Seeder
      */
     public function run()
     {
-        DB::table('countries')->truncate();
+        DB::table('countries');
 
         $countries = [
             ['name' => 'Afghanistan', 'code' => 'AF'],

@@ -28,6 +28,7 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
     Route::get('users/{id}', 'Api\UserController@show');
     Route::post('users', 'Api\UserController@store');
     Route::put('users/{id}', 'Api\UserController@update');
+    Route::put('users/updatelogin/{id}', 'Api\UserController@updateLogin');
     Route::delete('users/{id}', 'Api\UserController@destroy');
 
     // Company Route

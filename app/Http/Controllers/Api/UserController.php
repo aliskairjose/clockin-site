@@ -243,4 +243,42 @@ class UserController extends Controller
             ]
         );
     }
+
+    /**
+     * Registra el ultimo login del usuario
+     */
+    public function updateLogin(Request $request, $id){
+        try {
+            $data = User::findOrFail($id);
+            $data->last_login = $request->last_login;
+            $data->save();
+
+        } catch (Exception $e) {
+            return response()->json(
+                [
+                    'isSuccess' => false,
+                    'status' => 400,
+                    'error' => $e,
+                    'message' => 'Ha ocurrido un error'
+                ]
+            );
+        } catch (ModelNotFoundException $e) {
+            return response()->json(
+                [
+                    'isSuccess' => true,
+                    'status' => 200,
+                    'error' => $e,
+                    'message' => 'No se encontro registro con id ' . $id
+                ]
+            );
+        }
+
+        return response()->json(
+            [
+                'isSuccess' => true,
+                'status' => 200,
+                'message' => 'El registro ha sido actualizado'
+            ]
+        );
+    }
 }
