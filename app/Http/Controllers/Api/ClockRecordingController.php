@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ClockRecordingController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -66,7 +66,7 @@ class ClockRecordingController extends Controller
                 [
                     'isSuccess' => false,
                     'status' => 400,
-                    'error' => $e,
+                    'error' => $e->errorInfo[ 2 ],
                     'message' => 'Ha ocurrido un error'
                 ]
             );
