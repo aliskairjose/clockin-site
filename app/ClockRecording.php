@@ -9,5 +9,5 @@ class ClockRecording extends Model
 {
     use Notifiable;
 
-    protected $fillable = ['type', 'ip', 'lat', 'lon', 'device_name'];
+    protected $fillable = ['type', 'ip', 'lat', 'lon', 'device_name', 'user_id'];
 }

@@ -17,8 +17,8 @@ class CreateClockRecordingsTable extends Migration
             $table->bigIncrements('id');
             $table->tinyInteger('type')->comment('1 para in or 2 para out');
             $table->string('ip');
-            $table->decimal('lat');
-            $table->decimal('lon');
+            $table->decimal('lat', 8,6)->signed();
+            $table->decimal('lon', 9,6)->signed();
             $table->string('device_name');
             $table->timestamps();
         });

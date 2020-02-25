@@ -19,7 +19,8 @@ class ClockRecording extends JsonResource
             'ip'          => $this->ip,
             'lat'         => $this->lat,
             'lon'         => $this->lon,
-            'device_name' => $this->device_name
+            'device_name' => $this->device_name,
+            'user_id'     => $this->user_id
         ];
     }
 }
