@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -17,7 +16,9 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-            'name','email', 'password', 'phone','country_id', 'postcode','picture','blocked','active','last_login', 'role_id' ];
+      'name', 'email', 'password', 'phone', 'country_id', 'postcode', 'picture', 'blocked', 'active', 'last_login',
+      'role_id'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -25,7 +26,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password'
+      'password'
     ];
 
     /**
@@ -34,8 +35,8 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'phone_verified_at' => 'datetime',
+      'email_verified_at' => 'datetime',
+      'phone_verified_at' => 'datetime',
     ];
 
     public function getJWTIdentifier()
@@ -52,10 +53,10 @@ class User extends Authenticatable implements JWTSubject
      * Relacion mucho a muchos con Company
      */
 
-     public function companies()
-     {
-         return $this->belongsToMany(Company::class);
-     }
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class);
+    }
 
     /**
      * Relacion uno a uno con Roles
