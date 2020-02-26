@@ -1,4 +1,4 @@
-@extends('layouts.page_templates.clockin')
+@extends('layouts.page_templates.app')
 
 @section('content')
 <div class="container">
