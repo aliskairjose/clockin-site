@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::view('/', 'welcome');
+Route::view('/', 'pages.welcome');
 
 Auth::routes();
 

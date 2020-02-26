@@ -66,14 +66,17 @@
 
                 {{-- RIGTH SIDE --}}
                 <div class="app-main__outer">
+
                     <div class="app-main__inner">
                         @yield('content')
                     </div>
 
                     {{-- FOOTER --}}
                     @include('layouts.footers.footer')
+
                 </div>
                 {{-- RIGTH SIDE --}}
+
             </div>
             </!doctype>
             <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
