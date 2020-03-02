@@ -12,8 +12,12 @@
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+{{-- <link rel="stylesheet" href="path/to/pe-icon-7-stroke/css/pe-icon-7-stroke.css"> --}}
+
 
 
 <!-- Styles -->
-{{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <link href="{{asset('css/main.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
+
