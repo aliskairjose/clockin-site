@@ -25,9 +25,4 @@ class HomeController extends Controller
     {
         return view('pages.home');
     }
-
-    public function inicio()
-    {
-        return view('pages.inicio');
-    }
 }
