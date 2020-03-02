@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,8 +20,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-      'name', 'email', 'password', 'phone', 'country_id', 'postcode', 'picture', 'blocked', 'active', 'last_login',
-      'role_id'
+        'name', 'email', 'password', 'phone', 'country_id', 'postcode', 'picture', 'blocked', 'active', 'last_login',
+        'role_id'
     ];
 
     /**
@@ -29,7 +30,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array
      */
     protected $hidden = [
-      'password'
+        'password'
     ];
 
     /**
@@ -38,9 +39,15 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array
      */
     protected $casts = [
-      'email_verified_at' => 'datetime',
-      'phone_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime',
+        'phone_verified_at' => 'datetime',
     ];
+
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
 
     public function getJWTIdentifier()
     {
@@ -68,5 +75,4 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     {
         return $this->belongsTo(Role::class);
     }
-
 }
