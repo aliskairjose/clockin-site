@@ -63,7 +63,7 @@ class ResetPassword extends Notification
         return (new MailMessage)
             ->subject(Lang::get('Notificacion de Reestablecimiento de Contraseña'))
             ->line(Lang::get('Recibió este correo electrónico porque recibimos una solicitud de restablecimiento de contraseña para su cuenta.'))
-            ->action(Lang::get('Reset Password'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->action(Lang::get('Reestablecer Contraseña'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
             ->line(Lang::get('Este enlace de restablecimiento de contraseña caducará en: contar minutos.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(Lang::get('Si no solicitó un restablecimiento de contraseña, no se requiere ninguna otra acción.'));
     }
