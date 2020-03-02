@@ -88,7 +88,7 @@
 
                             <div class="form-group row">
                                 <label for="postcode"
-                                       class="col-md-4 col-form-label text-md-right">{{ __('Zip code') }}</label>
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Zip Code') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="postcode" type="text" class="form-control" name="postcode" required
@@ -98,17 +98,6 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-
-                                <div class="col-md-6">
-                                    <select class=”form-control” name="role" id="role" required>
-                                        <option value=2”>Administrator</option>
-                                        <option value=3>Employee</option>
-                                    </select>
                                 </div>
                             </div>
 

@@ -18,15 +18,12 @@ use Illuminate\Support\Facades\DB;
 
 Route::view('/', 'pages.welcome');
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['verified']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
-
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/inicio', 'HomeController@inicio')->name('inicio');
+/* Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+}); */

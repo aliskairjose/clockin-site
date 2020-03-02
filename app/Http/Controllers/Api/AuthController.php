@@ -35,7 +35,7 @@ class  AuthController extends Controller
 
             $data = new UserResource((User::where('email', $request->get('email')))->firstOrFail());
 
-            $company_ids = [];
+            /* $company_ids = [];
             foreach ($data->companies as $value) {
                 array_push($company_ids, $value->id);
             }
@@ -48,7 +48,7 @@ class  AuthController extends Controller
                         'message'   => 'Empleado no pertenece a la empresa selecionada.',
                     ]
                 );
-            }
+            } */
         } catch (JWTException $e) {
             return response()->json(['error' => 'Could not create token'], 500);
         } catch (Exception $e) {
