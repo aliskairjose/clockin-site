@@ -28,6 +28,6 @@ class VerifiedEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.verified-email');
+        return $this->markdown('emails.verified-email');
     }
 }
