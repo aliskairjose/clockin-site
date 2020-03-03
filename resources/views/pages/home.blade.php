@@ -71,42 +71,48 @@
 
 <div class="row d-flex justify-content-end mb-3">
     <div class="col-md-2">
-        <a href="{{ route('users.create') }}" type="button" data-toggle="tooltip" title="Agregar empleado" data-placement="bottom"
-            class="btn-shadow mr-3 btn btn-primary">
+        <a href="{{ route('users.create') }}" type="button" data-toggle="tooltip" title="Agregar empleado"
+            data-placement="bottom" class="btn-shadow mr-3 btn btn-primary">
             <i class="fas fa-plus"></i>
         </a>
     </div>
 </div>
 
-<div class="row d-flex justify-content-center">
+<div class="row">
     @if (session('status'))
     <div class="alert alert-success" role="alert">
         {{ session('status') }}
     </div>
     @endif
-    <div class="col-md-11">
-        <table class="table responsive ">
+</div>
+
+<div class="main-card mb-3 card">
+    <div class="card-header">
+        Lista de empleados
+    </div>
+    <div class="table-responsive">
+        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Blocked</th>
-                    <th>Activo</th>
-                    <th>Ultimo ingreso</th>
-                    <th>Acción</th>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Correo</th>
+                    <th class="text-center">Blocked</th>
+                    <th class="text-center">Activo</th>
+                    <th class="text-center">Ultimo ingreso</th>
+                    <th class="text-center">Acción</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($employees as $employee)
                 <tr>
-                    <td scope="row">{{ $employee->id }}</td>
-                    <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->blocked }}</td>
-                    <td>{{ $employee->active }}</td>
-                    <td>{{ $employee->last_login }}</td>
-                    <td>
+                    <td class="text-center text-muted">{{ $employee->id }}</td>
+                    <td class="text-center">{{ $employee->name }}</td>
+                    <td class="text-center">{{ $employee->email }}</td>
+                    <td class="text-center">{{ $employee->blocked }}</td>
+                    <td class="text-center">{{ $employee->active }}</td>
+                    <td class="text-center">{{ $employee->last_login }}</td>
+                    <td class="text-center">
                         <a href="{{ route('users.edit', $employee->id, '/edit' ) }}">
                             <span class="btn-icon-wrapper pr-2 opacity-7">
                                 <i class="fas fa-pencil-alt"></i>
@@ -119,5 +125,4 @@
         </table>
     </div>
 </div>
-
 @endsection
