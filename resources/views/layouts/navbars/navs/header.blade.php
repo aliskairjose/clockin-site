@@ -47,12 +47,17 @@
                         <div class="widget-content-left">
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                    @if (Auth::user()->picture)
                                     <img width="42" class="rounded-circle" src="{{ Auth::user()->picture }}" alt="">
+                                    @else
+                                    <img width="42" class="rounded-circle" src="{{ asset('img/avatar.jpg') }}" alt="">
+                                    @endif
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                     class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id, '/edit' ) }}">
+                                    <a class="dropdown-item"
+                                        href="{{ route('users.edit', Auth::user()->id, '/edit' ) }}">
                                         {{ __('Cuenta de usuario') }}
                                     </a>
                                     <button type="button" tabindex="0" class="dropdown-item">Configuración</button>
