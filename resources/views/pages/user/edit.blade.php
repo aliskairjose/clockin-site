@@ -76,7 +76,7 @@
     </div>
     @endif
     <div class="card-body">
-        <form method="POST" action="{{ route('users.update', $data->id ) }}">
+        <form method="POST" action="{{ route('users.update', $data->id ) }}" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT')}}
 
@@ -159,6 +159,11 @@
                 </div>
             </div>
             @endif
+
+            <div class="form-group row">
+                <label for="picture" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                <input type="file" name="picture">
+            </div>
 
             <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">

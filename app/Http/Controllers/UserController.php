@@ -78,7 +78,21 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::findOrFail($id)->update($request->all());
+        // User::findOrFail($id)->update($request->all());
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->postcode = $request->postcode;
+
+        if ($request->hasFile('picture')) {
+
+            $path = $request->picture->store('public/images/avatar/' . $id);
+            $path = str_replace('public', 'storage', $path);
+            $user->picture = $path;
+        }
+        $user->save();
+
 
         return redirect('/home');
     }
