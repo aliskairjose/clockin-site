@@ -6,6 +6,7 @@ use App\Country;
 use App\Http\Resources\CountryCollection;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -26,7 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $selectedID = 1;
+        $countries = Country::pluck('id', 'name');
+        $select = ['NO' => 0, 'SI' => 1];
+        return view('pages.user.create', compact('countries', 'selectedID', 'select'));
     }
 
     /**
@@ -37,7 +41,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $companyId = Auth::user()->companies[0]->id;
+
+        $user = User::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'postcode' => $request->postcode,
+                'blocked' => $request->blocked,
+                'active' => $request->active,
+                'role_id' => 3,
+            ]
+        );
+
+        $user->companies()->attach($companyId);
+
+        return redirect('/home');
+
     }
 
     /**
@@ -63,10 +84,10 @@ class UserController extends Controller
     {
         $data = User::findOrFail($id);
         $selectedID = $data->country_id;
-        $countries = Country::pluck('id','name');
-        $select = [ 'NO'=> 0, 'SI' => 1];
+        $countries = Country::pluck('id', 'name');
+        $select = ['NO' => 0, 'SI' => 1];
 
-        return view('pages.user.edit', compact('data', 'countries', 'selectedID', 'select' ));
+        return view('pages.user.edit', compact('data', 'countries', 'selectedID', 'select'));
     }
 
     /**
@@ -79,19 +100,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // User::findOrFail($id)->update($request->all());
-        $user = User::findOrFail($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->postcode = $request->postcode;
 
         if ($request->hasFile('picture')) {
 
             $path = $request->picture->store('public/images/avatar/' . $id);
             $path = str_replace('public', 'storage', $path);
-            $user->picture = $path;
         }
-        $user->save();
 
 
         return redirect('/home');

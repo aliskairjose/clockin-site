@@ -69,6 +69,15 @@
     </div>
 </div>
 
+<div class="row d-flex justify-content-end mb-3">
+    <div class="col-md-2">
+        <a href="{{ route('users.create') }}" type="button" data-toggle="tooltip" title="Agregar empleado" data-placement="bottom"
+            class="btn-shadow mr-3 btn btn-primary">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</div>
+
 <div class="row d-flex justify-content-center">
     @if (session('status'))
     <div class="alert alert-success" role="alert">
