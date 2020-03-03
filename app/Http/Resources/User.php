@@ -24,11 +24,9 @@ class User extends JsonResource
             'picture'           => $this->picture,
             'blocked'           => $this->blocked,
             'active'            => $this->active,
-            // 'email_verified_at' =>$this->email_verified_at,
-            // 'phone_verified_at' => $this->phone_verified_at,
             'last_login'        => $this->last_login,
             'role'              => new \App\Http\Resources\Role($this->role),
-            'companies'        => new CompanyCollection($this->companies),
+            'companies'         => new CompanyCollection($this->companies),
         ];
     }
 }

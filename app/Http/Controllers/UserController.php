@@ -64,7 +64,9 @@ class UserController extends Controller
         $data = User::findOrFail($id);
         $selectedID = $data->country_id;
         $countries = Country::pluck('id','name');
-        return view('pages.user.edit', compact('data', 'countries', 'selectedID' ));
+        $select = [ 'NO'=> 0, 'SI' => 1];
+
+        return view('pages.user.edit', compact('data', 'countries', 'selectedID', 'select' ));
     }
 
     /**
@@ -77,6 +79,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         User::findOrFail($id)->update($request->all());
+
         return redirect('/home');
     }
 

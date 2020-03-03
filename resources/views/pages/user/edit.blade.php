@@ -122,9 +122,6 @@
 
                 <div class="col-md-6">
                     <select class="form-control" name="country_id">
-
-                        {{-- <option>Pais</option> --}}
-
                         @foreach ($countries as $key => $value)
                         <option value="{{ $value }}" {{ ( $value == $selectedID) ? 'selected' : '' }}>
                             {{ $key }}
@@ -133,6 +130,35 @@
                     </select>
                 </div>
             </div>
+
+            @if ($data->role_id === 3)
+
+            <div class="form-group row">
+                <label for="blocked" class="col-md-4 col-form-label text-md-right">{{ __('Bloqueado') }}</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="blocked">
+                        @foreach ($select as $key => $value)
+                        <option value="{{ $value }}" {{ ( $value == $data->blocked) ? 'selected' : '' }}>
+                            {{ $key }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="active" class="col-md-4 col-form-label text-md-right">{{ __('Activo') }}</label>
+                <div class="col-md-6">
+                    <select class="form-control" name="active">
+                        @foreach ($select as $key => $value)
+                        <option value="{{ $value }}" {{ ( $value == $data->active) ? 'selected' : '' }}>
+                            {{ $key }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            @endif
 
             <div class="form-group row mb-0">
                 <div class="col-md-8 offset-md-4">
