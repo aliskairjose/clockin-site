@@ -53,13 +53,13 @@
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                     class="dropdown-menu dropdown-menu-right">
                                     <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id, '/edit' ) }}">
-                                        {{ __('User Account') }}
+                                        {{ __('Cuenta de usuario') }}
                                     </a>
-                                    <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                    <button type="button" tabindex="0" class="dropdown-item">Configuración</button>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar sesion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"

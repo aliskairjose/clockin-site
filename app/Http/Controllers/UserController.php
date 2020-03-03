@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::findOrFail($id)->update($request->all());
+        return redirect('/home');
     }
 
     /**
