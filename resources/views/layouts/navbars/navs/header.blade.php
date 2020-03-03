@@ -52,11 +52,10 @@
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true"
                                     class="dropdown-menu dropdown-menu-right">
-
-                                    <button type="button" tabindex="0" class="dropdown-item">User Account</button>
+                                    <a class="dropdown-item" href="{{ route('users.edit', Auth::user()->id, '/edit' ) }}">
+                                        {{ __('User Account') }}
+                                    </a>
                                     <button type="button" tabindex="0" class="dropdown-item">Settings</button>
-                                    <h6 tabindex="-1" class="dropdown-header">Header</h6>
-                                    <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                     <div tabindex="-1" class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
