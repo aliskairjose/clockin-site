@@ -68,6 +68,7 @@
         </div>
     </div>
 </div>
+@if ($employees )
 
 <div class="row d-flex justify-content-end mb-3">
     <div class="col-md-2">
@@ -85,6 +86,7 @@
     </div>
     @endif
 </div>
+
 
 <div class="main-card mb-3 card">
     <div class="card-header">
@@ -125,4 +127,6 @@
         </table>
     </div>
 </div>
+
+@endif
 @endsection

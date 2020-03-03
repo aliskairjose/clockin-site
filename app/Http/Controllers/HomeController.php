@@ -25,9 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Auth::user()->companies[0]->id;
-        $company = Company::findOrFail($data);
-        $employees = $company->users;
+        $employees = [];
+        $companies = Auth::user()->companies;
+        if($companies->count() > 0){
+            $data = $companies[0]->id;
+            $company = Company::findOrFail($data);
+            $employees = $company->users;
+
+        }
+
+        // $employees = $company->users;
         return view('pages.home', compact('employees'));
     }
 }
