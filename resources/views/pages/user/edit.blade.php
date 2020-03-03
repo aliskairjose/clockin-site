@@ -107,12 +107,30 @@
                         autocomplete="phone" autofocus>
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="poscode" class="col-md-4 col-form-label text-md-right">{{ __('Codigo Postal') }}</label>
 
                 <div class="col-md-6">
                     <input id="postcode" type="text" class="form-control" name="postcode" value="{{ $data->postcode }}"
                         autocomplete="postcode" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="country_id" class="col-md-4 col-form-label text-md-right">{{ __('Pais') }}</label>
+
+                <div class="col-md-6">
+                    <select class="form-control" name="country_id">
+
+                        {{-- <option>Pais</option> --}}
+
+                        @foreach ($countries as $key => $value)
+                        <option value="{{ $value }}" {{ ( $value == $selectedID) ? 'selected' : '' }}>
+                            {{ $key }}
+                        </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
+use App\Http\Resources\CountryCollection;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -60,7 +62,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::findOrFail($id);
-        return view('pages.user.edit', compact('data'));    }
+        $selectedID = $data->country_id;
+        $countries = Country::pluck('id','name');
+        return view('pages.user.edit', compact('data', 'countries', 'selectedID' ));
+    }
 
     /**
      * Update the specified resource in storage.
