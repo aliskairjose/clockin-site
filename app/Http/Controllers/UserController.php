@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use App\Events\EmailChanged;
 use App\Http\Resources\CountryCollection;
 use App\User;
 use Illuminate\Http\Request;
@@ -58,7 +59,6 @@ class UserController extends Controller
         $user->companies()->attach($companyId);
 
         return redirect('/home');
-
     }
 
     /**
@@ -101,12 +101,23 @@ class UserController extends Controller
     {
         // User::findOrFail($id)->update($request->all());
 
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->postcode = $request->postcode;
+        // $user->blocked = $request->bocked;
+        // $user->active = $request->active;
+
         if ($request->hasFile('picture')) {
 
             $path = $request->picture->store('public/images/avatar/' . $id);
             $path = str_replace('public', 'storage', $path);
         }
 
+        $user->save();
+
+        event(new EmailChanged($user));
 
         return redirect('/home');
     }
