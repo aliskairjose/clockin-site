@@ -27,6 +27,5 @@ class EmailChangeNotification
     public function handle(EmailChanged $event)
     {
         $event->user->sendEmailVerificationNotification();
-
     }
 }

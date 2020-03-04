@@ -102,6 +102,10 @@ class UserController extends Controller
         // User::findOrFail($id)->update($request->all());
 
         $user = User::findOrFail($id);
+        if ($user->email != $request->email) {
+            event(new EmailChanged($user));
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
@@ -110,14 +114,11 @@ class UserController extends Controller
         // $user->active = $request->active;
 
         if ($request->hasFile('picture')) {
-
             $path = $request->picture->store('public/images/avatar/' . $id);
             $path = str_replace('public', 'storage', $path);
         }
 
         $user->save();
-
-        event(new EmailChanged($user));
 
         return redirect('/home');
     }
