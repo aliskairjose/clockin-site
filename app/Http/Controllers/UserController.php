@@ -110,10 +110,11 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->postcode = $request->postcode;
-        if ($request->blocked) {
+
+        if (isset($request->blocked)) {
             $user->blocked = $request->blocked;
         }
-        if ($request->active) {
+        if (isset($request->active)) {
             $user->active = $request->active;
         }
 
