@@ -110,8 +110,12 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->postcode = $request->postcode;
-        // $user->blocked = $request->bocked;
-        // $user->active = $request->active;
+        if ($request->blocked) {
+            $user->blocked = $request->blocked;
+        }
+        if ($request->active) {
+            $user->active = $request->active;
+        }
 
         if ($request->hasFile('picture')) {
             $path = $request->picture->store('public/images/avatar/' . $id);
