@@ -87,7 +87,6 @@
     @endif
 </div>
 
-
 <div class="main-card mb-3 card">
     <div class="card-header">
         Lista de empleados
@@ -115,9 +114,16 @@
                     <td class="text-center">{{ $employee->active }}</td>
                     <td class="text-center">{{ $employee->last_login }}</td>
                     <td class="text-center">
-                        <a href="{{ route('users.edit', $employee->id, '/edit' ) }}">
+                        <a href="{{ route('users.edit', $employee->id, '/edit' ) }}"  data-toggle="tooltip" title="Editar"
+                            data-placement="bottom">
                             <span class="btn-icon-wrapper pr-2 opacity-7">
                                 <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </a>
+                        <a href="{{ route('users.edit', $employee->id, '/edit' ) }}"  data-toggle="tooltip" title="Eliminar"
+                            data-placement="bottom">
+                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                                <i class="fas fa-minus-circle"></i>
                             </span>
                         </a>
                     </td>
