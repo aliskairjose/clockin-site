@@ -109,6 +109,15 @@
             </div>
 
             <div class="form-group row">
+                <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Direccion') }}</label>
+
+                <div class="col-md-6">
+                    <input id="address" type="text" class="form-control" name="address" value="" autocomplete="address"
+                        value="{{ $data->address }} " autofocus>
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <label for="poscode" class="col-md-4 col-form-label text-md-right">{{ __('Codigo Postal') }}</label>
 
                 <div class="col-md-6">

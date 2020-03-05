@@ -15,7 +15,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+        return view('pages.companies.index')->with('companies', $companies);
     }
 
     /**
@@ -46,6 +47,8 @@ class CompanyController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'description' => $request->description,
+                'address' => $request->address,
+                'country_id' =>$request->country_id
             ]
         );
 
@@ -54,6 +57,8 @@ class CompanyController extends Controller
             $path = str_replace('public', 'storage', $path);
             $data->save();
         }
+
+        return redirect('/companies');
     }
 
     /**
@@ -75,7 +80,10 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data =  Company::findOrFail($id);
+        $selectedID = $data->country_id;
+        $countries = Country::pluck('id', 'name');
+        return view('pages.companies.edit', compact('data', 'countries', 'selectedID'));
     }
 
     /**
@@ -87,7 +95,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
