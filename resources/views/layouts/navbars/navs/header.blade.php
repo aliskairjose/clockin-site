@@ -50,7 +50,10 @@
                                     @if (Auth::user()->picture)
                                     <img width="42" class="rounded-circle" src="{{ Auth::user()->picture }}" alt="">
                                     @else
-                                    <img width="42" class="rounded-circle" src="{{ asset('img/avatar.png') }}" alt="">
+                                    {{-- <img width="42" class="rounded-circle" src="{{ asset('img/avatar.png') }}" alt=""> --}}
+                                    <span style="font-size: 3em; color: Dodgerblue;">
+                                        <i class="fas fa-user-circle"></i>
+                                      </span>
                                     @endif
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>

@@ -73,7 +73,7 @@
     <div class="col-md-2">
         <a href="{{ route('companies.create') }}" type="button" data-toggle="tooltip" title="Agregar empresa"
             data-placement="bottom" class="btn-shadow mr-3 btn btn-primary">
-            <i class="fas fa-plus"></i>
+            <i class="fas fa-user-plus"></i>
         </a>
     </div>
 </div>
@@ -113,14 +113,14 @@
                     <td class="text-center">
                         <a href="{{ route('companies.edit', $d->id, '/edit' ) }}" data-toggle="tooltip" title="Editar"
                             data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
-                                <i class="fas fa-pencil-alt"></i>
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: Dodgerblue">
+                                <i class="fas fa-user-edit"></i>
                             </span>
                         </a>
                         <a href="{{ route('companies.edit', $d->id, '/edit' ) }}" data-toggle="tooltip" title="Eliminar"
                             data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
-                                <i class="fas fa-minus-circle"></i>
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: red">
+                                <i class="fas fa-user-minus"></i>
                             </span>
                         </a>
                     </td>

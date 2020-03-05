@@ -113,13 +113,13 @@
                     <td class="text-center">
                         <a href="{{ route('companies.edit', $d->id, '/edit' ) }}"  data-toggle="tooltip" title="Editar"
                             data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: Dodgerblue">
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
                         </a>
                         <a href="{{ route('companies.edit', $d->id, '/edit' ) }}"  data-toggle="tooltip" title="Eliminar"
                             data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: red;">
                                 <i class="fas fa-minus-circle"></i>
                             </span>
                         </a>

@@ -122,20 +122,20 @@
                     <td class="text-center">
                         <a href="{{ route('users.edit', $employee->id, '/edit' ) }}" data-toggle="tooltip"
                             title="Editar" data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: Dodgerblue">
                                 <i class="fas fa-user-edit"></i>
                             </span>
                         </a>
                         <a href="{{ route('users.edit', $employee->id, '/edit' ) }}" data-toggle="tooltip"
                             title="Eliminar" data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: red">
                                 <i class="fas fa-user-minus"></i>
                             </span>
                         </a>
                         @if (Auth::user()->role_id == '2')
                         <a href="{{ route('users.show', $employee->id ) }}" data-toggle="tooltip"
                             title="Horarios" data-placement="bottom">
-                            <span class="btn-icon-wrapper pr-2 opacity-7">
+                            <span class="btn-icon-wrapper pr-2 opacity-7" style="color: green">
                                 <i class="fas fa-user-clock"></i>
                             </span>
                         </a>
