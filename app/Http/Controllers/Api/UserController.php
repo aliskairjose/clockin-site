@@ -12,6 +12,7 @@ use App\Http\Resources\UserCollection;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -63,9 +64,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-         try {
+        try {
             $password = Str::random(10);
-
+            $role_id = 3; // Role de empleado
+            if (Auth::user()->role_id == '1') {
+                $role_id == 2; // Role de empresa
+            }
             $data = User::create(
                 [
                     'name' => $request->name,
@@ -75,17 +79,15 @@ class UserController extends Controller
                     'country_id' => $request->country_id,
                     'postcode' => $request->postcode,
                     'picture' => $request->picture,
-                    'role_id' => $request->role_id
+                    'role_id'   => $role_id
                 ]
             );
 
             // agregamos al usuario recien creado a la tabla pivote company_user
-            if($request->role_id !== 1){
+            if ($request->role_id !== 1) {
                 $data->companies()->attach($request->company_id);
             }
-
-        }
-        catch (QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
@@ -94,8 +96,7 @@ class UserController extends Controller
                     'message' => 'Ha ocurrido un error'
                 ]
             );
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             return response()->json(
                 [
                     'isSuccess' => false,
@@ -247,12 +248,12 @@ class UserController extends Controller
     /**
      * Registra el ultimo login del usuario
      */
-    public function updateLogin(Request $request, $id){
+    public function updateLogin(Request $request, $id)
+    {
         try {
             $data = User::findOrFail($id);
             $data->last_login = $request->last_login;
             $data->save();
-
         } catch (Exception $e) {
             return response()->json(
                 [

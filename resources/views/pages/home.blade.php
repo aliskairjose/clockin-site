@@ -72,7 +72,7 @@
 
 <div class="row d-flex justify-content-end mb-3">
     <div class="col-md-2">
-        <a href="{{ route('users.create') }}" type="button" data-toggle="tooltip" title="Agregar empleado"
+        <a href="{{ route('users.create') }}" type="button" data-toggle="tooltip" title="Agregar"
             data-placement="bottom" class="btn-shadow mr-3 btn btn-primary">
             <i class="fas fa-plus"></i>
         </a>
@@ -86,10 +86,9 @@
     </div>
     @endif
 </div>
-
 <div class="main-card mb-3 card">
     <div class="card-header">
-        Lista de empleados
+        Lista de usuarios
     </div>
     <div class="table-responsive">
         <table class="align-middle mb-0 table table-borderless table-striped table-hover">

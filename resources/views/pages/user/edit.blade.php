@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            @if ($data->role_id === 3)
+            @if (Auth::user()->role != '2')
 
             <div class="form-group row">
                 <label for="blocked" class="col-md-4 col-form-label text-md-right">{{ __('Bloqueado') }}</label>
