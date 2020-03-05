@@ -76,7 +76,6 @@
     </div>
     @endif
     <div class="card-body">
-        {{-- <form method="POST" action="{{ route('users.update', $data->id ) }}" enctype="multipart/form-data"> --}}
         <form method="POST" action="{{ route('users.store')}}" enctype="multipart/form-data">
             @csrf
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Country;
 use Illuminate\Http\Request;
 
@@ -38,7 +39,21 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = Company::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'description' => $request->description,
+            ]
+        );
+
+        if ($request->hasFile('picture')) {
+            $path = $request->picture->store('public/images/avatar/company/' . $data->id);
+            $path = str_replace('public', 'storage', $path);
+            $data->save();
+        }
     }
 
     /**
