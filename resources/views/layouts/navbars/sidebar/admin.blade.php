@@ -36,8 +36,20 @@
             <ul class="vertical-nav-menu">
                 <li>
                     <a href="{{url('home')}}">
-                        <i class="metismenu-icon pe-7s-graph2">
+                        <i class="metismenu-icon pe-7s-home">
                         </i>Home
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('users/employees')}}">
+                        <i class="metismenu-icon pe-7s-id">
+                        </i>Empleados
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('schedule')}}">
+                        <i class="metismenu-icon pe-7s-stopwatch">
+                        </i>Horarios
                     </a>
                 </li>
             </ul>

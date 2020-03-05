@@ -7,7 +7,7 @@
             <div class="page-title-icon">
                 <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
             </div>
-            <div>Agregar nueva compañia
+            <div>Editar Compañia
                 <div class="page-title-subheading">
                     This is an example dashboard created using build-in elements and components.
                 </div>

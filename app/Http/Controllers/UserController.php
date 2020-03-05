@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Country;
 use App\Events\EmailChanged;
 use App\Http\Resources\CountryCollection;
@@ -18,8 +19,28 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+
+        $users = User::all();
+        return view('pages.user.index', compact('users'));
     }
+
+    /**
+     * Muestra la lista de empleados de la empresa
+     */
+    public function employees()
+    {
+
+        $employees = [];
+        $companies = Auth::user()->companies;
+        if ($companies->count() > 0) {
+            $data = $companies[0]->id;
+            $company = Company::findOrFail($data);
+            $employees = $company->users;
+        }
+
+        return view('pages.user.employees', compact('employees'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

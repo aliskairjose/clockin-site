@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role_id === 1 ){
+        /* if(Auth::user()->role_id === 1 ){
             $employees = Auth::user()->usercompany();
             return view('pages.home', compact('employees'));
         }
@@ -40,6 +40,8 @@ class HomeController extends Controller
         }
 
         // $employees = $company->users;
-        return view('pages.home', compact('employees'));
+        return view('pages.home', compact('employees')); */
+
+        return view('pages.home');
     }
 }

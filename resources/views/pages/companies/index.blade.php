@@ -1,4 +1,3 @@
-hola
 @extends('layouts.page_templates.app')
 
 @section('content')
@@ -6,7 +5,7 @@ hola
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
+                <i class="pe-7s-graph2 icon-gradient bg-mean-fruit"></i>
             </div>
             <div>Empresas
                 <div class="page-title-subheading">
@@ -77,7 +76,6 @@ hola
             <i class="fas fa-plus"></i>
         </a>
     </div>
-
 </div>
 
 <div class="row">
@@ -87,9 +85,10 @@ hola
     </div>
     @endif
 </div>
+
 <div class="main-card mb-3 card">
     <div class="card-header">
-        Lista de usuarios
+        Lista de empresas
     </div>
     <div class="table-responsive">
         <table class="align-middle mb-0 table table-borderless table-striped table-hover">

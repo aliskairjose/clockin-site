@@ -5,9 +5,9 @@
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">
-                <i class="pe-7s-monitor icon-gradient bg-mean-fruit"></i>
+                <i class="pe-7s-id icon-gradient bg-mean-fruit"></i>
             </div>
-            <div> Dashboard {{ Auth::user()->name }}
+            <div> Empleados {{ Auth::user()->name }}
                 <div class="page-title-subheading">
                     This is an example dashboard created using build-in elements and components.
                 </div>
@@ -68,7 +68,7 @@
         </div>
     </div>
 </div>
-{{-- @if ($employees )
+@if ($employees )
 
 <div class="row d-flex justify-content-end mb-3">
     <div class="col-md-2">
@@ -84,9 +84,9 @@
         @endif
     </div>
 
-</div> --}}
+</div>
 
-{{-- <div class="row">
+<div class="row">
     @if (session('status'))
     <div class="alert alert-success" role="alert">
         {{ session('status') }}
@@ -149,5 +149,5 @@
 </div>
 
 @endif
---}}
+
 @endsection

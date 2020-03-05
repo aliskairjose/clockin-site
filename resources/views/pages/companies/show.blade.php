@@ -7,7 +7,7 @@
                 <div class="page-title-icon">
                     <i class="pe-7s-car icon-gradient bg-mean-fruit"></i>
                 </div>
-                <div>Horario del empleado: {{ $data->name }}
+                <div>Detalles de la empresa: {{ $data->name }}
                     <div class="page-title-subheading">
                         This is an example dashboard created using build-in elements and components.
                     </div>
@@ -76,7 +76,7 @@
             {{ session('status') }}
         </div>
         @endif
-        {{ $data->name }}
+
     </div>
 
 @endsection

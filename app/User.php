@@ -77,10 +77,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     }
 
     /**
-     * @return Listado de usuarios tipo empresa
+     * Retorna listado de usuarios tipo empresa
      */
-    public static function scopeUserCompany($query)
+    public function scopeUserCompany($query)
     {
         return $query->where('role_id', '=', '2')->get();
     }
+
 }
