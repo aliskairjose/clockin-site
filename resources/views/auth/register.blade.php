@@ -98,12 +98,6 @@
                                     @enderror
                                 </div>
                             </div>
-                            {{-- <div class="custom-control custom-checkbox"><input id="exampleCheck" type="checkbox"
-                                name="check" autocomplete="off" class="custom-control-input" value="true">
-                            <label for="exampleCheck" class="custom-control-label">
-                                Accept our <a [routerLink]="">Terms and Conditions</a>.
-                            </label>
-                        </div> --}}
                             <div class="divider"></div>
                             <h6 class="mb-0">
                                 {{ __('Ya tiene una cuenta?')}}

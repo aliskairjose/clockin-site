@@ -59,14 +59,14 @@
                         <div class="modal-footer clearfix">
                             @if (Route::has('password.request'))
                             <div class="float-left">
-                                <a href="{{ route('password.request') }}" class="btn-md btn btn-link">
+                                <a href="{{ route('password.request') }}" class="btn-lg btn btn-link">
                                     {{ __('Recuperar contraseña')}}
                                 </a>
                             </div>
                             @endif
                             <div class="float-right">
                                 <button type="submit"
-                                    class="btn btn-primary btn-md">{{ __('Login to Dashboard')}}</button>
+                                    class="btn btn-primary btn-lg">{{ __('Login to Dashboard')}}</button>
                             </div>
                         </div>
                     </div>

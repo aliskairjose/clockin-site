@@ -54,7 +54,7 @@
                         </div>
                         <div class="modal-footer clearfix">
                             <div class="float-right">
-                                <button type="submit" class="btn btn-primary btn-md">
+                                <button type="submit" class="btn btn-primary btn-lg">
                                     {{ __('Enviar enlace de restablecimiento de contraseña') }}
                                 </button>
                             </div>
