@@ -10,7 +10,8 @@ use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -68,6 +69,7 @@ class UserController extends Controller
         try {
             $user = User::where('email', $request->email)->firstOrFail();
         } catch (ModelNotFoundException $e) {
+            $password = Str::random(10);
             $user = User::create(
                 [
                     'name' => $request->name,
@@ -76,6 +78,7 @@ class UserController extends Controller
                     'postcode' => $request->postcode,
                     'blocked' => $request->blocked,
                     'active' => $request->active,
+                    'password' => Hash::make($data['password']),
                     'role_id' => 3,
                 ]
             );
