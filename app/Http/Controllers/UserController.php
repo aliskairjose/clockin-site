@@ -157,6 +157,23 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        return redirect('/home');
+    }
+
+    /**
+     * Remueve el empleado de la relacion con la empresa pero no de la db
+     * @return \Illuminate\Http\Response
+     */
+    public function remove($id)
+    {
+
+        $companyId = Auth::user()->companies[0]->id;
+        $user = User::findOrFail($id);
+        $user->companies()->detach($companyId);
+
+        return redirect('/users/employees');
+
     }
 }

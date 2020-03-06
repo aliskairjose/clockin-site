@@ -25,6 +25,7 @@ Route::group(['middleware' => ['verified']], function () {
     Route::get('home', 'HomeController@index')->name('home');
 
     Route::get('users/employees', 'UserController@employees');
+    Route::delete('users/{id}/remove', 'UserController@remove');
 
     Route::resource('users', 'UserController');
     Route::resource('companies', 'CompanyController');

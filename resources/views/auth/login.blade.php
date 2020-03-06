@@ -13,7 +13,7 @@
                         <div class="modal-body">
                             <div class="h5 modal-title text-center">
                                 <h4 class="mt-2">
-                                    <div>Welcome back,</div>
+                                    <div>Bienvenido de vuelta,</div>
                                     <span>Please sign in to your account below.</span>
                                 </h4>
                             </div>
@@ -53,27 +53,21 @@
                             <div class="divider"></div>
                             <h6 class="mb-0">
                                 No account?
-                                <a [routerLink]="" class="text-primary">Sign up now</a>
+                                <a class="text-primary" href="{{ route('register') }}">{{ __('Sign up now') }}</a>
                             </h6>
                         </div>
                         <div class="modal-footer clearfix">
                             @if (Route::has('password.request'))
                             <div class="float-left">
-                                <a href="{{ route('password.request') }}" class="btn-lg btn btn-link">Recover Password</a>
+                                <a href="{{ route('password.request') }}" class="btn-lg btn btn-link">
+                                    Recover Password
+                                </a>
                             </div>
                             @endif
                             <div class="float-right">
-                            <button type="submit" class="btn btn-primary btn-lg">{{ __('Login to Dashboard')}}</button>
+                                <button type="submit"
+                                    class="btn btn-primary btn-lg">{{ __('Login to Dashboard')}}</button>
                             </div>
-                            {{-- <button type="submit" class="btn btn-primary">
-                                {{ __('Login') }}
-                            </button>
-
-                            @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
-                            </a>
-                            @endif --}}
                         </div>
                     </div>
                 </div>

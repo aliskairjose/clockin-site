@@ -74,15 +74,21 @@
                                 <i class="fas fa-user-edit"></i>
                             </span>
                         </a>
-                        <a href="{{ route('users.edit', $employee->id, '/edit' ) }}" data-toggle="tooltip"
-                            title="Eliminar" data-placement="bottom">
+                        <a href="{{ url('users/'.$employee->id.'/remove' ) }}" data-toggle="tooltip"
+                            title="Eliminar" data-placement="bottom" onclick="event.preventDefault();
+                            document.getElementById('delete-form').submit();">
                             <span class="btn-icon-wrapper pr-2 opacity-7" style="color: red">
                                 <i class="fas fa-user-minus"></i>
                             </span>
                         </a>
+                        <form id="delete-form" action="{{ url('users/'.$employee->id.'/remove' ) }}"
+                            method="POST" style="display: none;">
+                            @csrf
+                            {{ method_field('DELETE')}}
+                        </form>
                         @if (Auth::user()->role_id == '2')
-                        <a href="{{ route('users.show', $employee->id ) }}" data-toggle="tooltip"
-                            title="Horarios" data-placement="bottom">
+                        <a href="{{ route('users.show', $employee->id ) }}" data-toggle="tooltip" title="Horarios"
+                            data-placement="bottom">
                             <span class="btn-icon-wrapper pr-2 opacity-7" style="color: green">
                                 <i class="fas fa-user-clock"></i>
                             </span>
