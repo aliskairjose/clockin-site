@@ -7,8 +7,10 @@ use App\Country;
 use App\Events\EmailChanged;
 use App\Http\Resources\CountryCollection;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
@@ -63,23 +65,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            $user = User::where('email', $request->email)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            $user = User::create(
+                [
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'phone' => $request->phone,
+                    'postcode' => $request->postcode,
+                    'blocked' => $request->blocked,
+                    'active' => $request->active,
+                    'role_id' => 3,
+                ]
+            );
+        }
+
         $companyId = Auth::user()->companies[0]->id;
-
-        $user = User::create(
-            [
-                'name' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'postcode' => $request->postcode,
-                'blocked' => $request->blocked,
-                'active' => $request->active,
-                'role_id' => 3,
-            ]
-        );
-
         $user->companies()->attach($companyId);
 
         return redirect('/home');
+
     }
 
     /**
@@ -174,6 +180,5 @@ class UserController extends Controller
         $user->companies()->detach($companyId);
 
         return redirect('/users/employees');
-
     }
 }
