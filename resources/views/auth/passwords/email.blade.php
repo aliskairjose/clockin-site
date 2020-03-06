@@ -1,47 +1,72 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="h-100 bg-plum-plate bg-animation">
+    <div class="d-flex h-100 justify-content-center align-items-center">
+        <div class="mx-auto app-login-box col-md-6">
+            <div class="app-logo-inverse mx-auto mb-3"></div>
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+                <div class="modal-dialog w-100">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="h5 modal-title">
+                                Olvido su contraseña?
+                                <h6 class="mt-1 mb-0 opacity-8"><span>Use este formulario para recuperarla.</span></h6>
                             </div>
                         </div>
+                        <div class="modal-body">
+                            <div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <fieldset class="form-group" id="__BVID__132">
+                                                <div tabindex="-1" role="group">
+                                                    <label for="exampleEmail">Email</label>
+                                                    <input id="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        name="email" value="{{ old('email') }}" required
+                                                        autocomplete="email" autofocus placeholder="Ingrese email">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                                    @error('email')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="divider"></div>
+                            <h6 class="mb-0">
+                                <a href="{{ route('login') }}" class="text-primary">
+                                    {{ __('Iniciar sesión en cuenta existente') }}
+                                </a>
+                            </h6>
+                        </div>
+                        <div class="modal-footer clearfix">
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary btn-md">
+                                    {{ __('Enviar enlace de restablecimiento de contraseña') }}
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
+            </form>
+            <div class="text-center text-white opacity-8 mt-3">
+                Copyright © ArchitectUI 2019
             </div>
         </div>
     </div>
 </div>
+
 @endsection

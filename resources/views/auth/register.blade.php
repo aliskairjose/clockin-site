@@ -12,10 +12,9 @@
                         <div class="modal-body">
                             <h5 class="modal-title">
                                 <h4 class="mt-2">
-                                    <div>Welcome,</div>
+                                    <div>Bienvenido,</div>
                                     <span>
-                                        It only takes a <span class="text-success">few seconds</span> to create your
-                                        account
+                                        Solo le tomará <span class="text-success">unos segundos</span> crear su cuenta
                                     </span>
                                 </h4>
                             </h5>
@@ -107,25 +106,25 @@
                         </div> --}}
                             <div class="divider"></div>
                             <h6 class="mb-0">
-                                Already have an account?
-                                <a [routerLink]="" class="text-primary"
-                                    href="{{ route('login') }}">{{ __('Sign in') }}</a>
+                                {{ __('Ya tiene una cuenta?')}}
+                                <a class="text-primary"
+                                    href="{{ route('login') }}">{{ __('Registrarse') }}</a>
                                 |
                                 <a href="{{ route('password.request') }}" class="text-primary">
-                                    Recover Password
+                                    {{ __('Recuperar Contraseña') }}
                                 </a>
                             </h6>
                         </div>
                         <div class="modal-footer d-block text-center">
                             <button type="submit"
                                 class="btn btn-wide btn-pill btn-shadow btn-hover-shine btn-secondary btn-lg">
-                                {{ __('Create Account') }}
+                                {{ __('Crear Cuenta') }}
                             </button>
                         </div>
                     </div>
                 </div>
                 <div class="text-center text-white opacity-8 mt-3">
-                    Copyright © ArchitectUI 2019
+                    Copyright © Clockin 2019
                 </div>
             </form>
         </div>

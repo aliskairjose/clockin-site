@@ -14,7 +14,7 @@
                             <div class="h5 modal-title text-center">
                                 <h4 class="mt-2">
                                     <div>Bienvenido de vuelta,</div>
-                                    <span>Please sign in to your account below.</span>
+                                    <span>Inicie sesión en su cuenta a continuación.</span>
                                 </h4>
                             </div>
                             <div id="exampleInputGroup1" role="group"
@@ -52,21 +52,21 @@
                             </div>
                             <div class="divider"></div>
                             <h6 class="mb-0">
-                                No account?
-                                <a class="text-primary" href="{{ route('register') }}">{{ __('Sign up now') }}</a>
+                               {{ __('No tiene cuenta?')}}
+                                <a class="text-primary" href="{{ route('register') }}">{{ __('Registrate ahora') }}</a>
                             </h6>
                         </div>
                         <div class="modal-footer clearfix">
                             @if (Route::has('password.request'))
                             <div class="float-left">
-                                <a href="{{ route('password.request') }}" class="btn-lg btn btn-link">
-                                    Recover Password
+                                <a href="{{ route('password.request') }}" class="btn-md btn btn-link">
+                                    {{ __('Recuperar contraseña')}}
                                 </a>
                             </div>
                             @endif
                             <div class="float-right">
                                 <button type="submit"
-                                    class="btn btn-primary btn-lg">{{ __('Login to Dashboard')}}</button>
+                                    class="btn btn-primary btn-md">{{ __('Login to Dashboard')}}</button>
                             </div>
                         </div>
                     </div>
