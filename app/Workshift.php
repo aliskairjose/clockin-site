@@ -14,8 +14,10 @@ class WorkShift extends Model
     /**
      * Retorna el horario del empleado en la empresa seleccionada
      */
-    public function scopeSchedule($query, $employee_id, $company_id)
+    public function scopeSchedule($query, $company_id)
     {
-        return $query()->where('empleoyee_id', '=', $employee_id)->where('company_id', '=', $company_id)->get();
+        // return $query()->where('company_id', '=', $company_id);
+        return WorkShift::where('company_id', $company_id)->get();
+
     }
 }

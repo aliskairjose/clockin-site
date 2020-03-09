@@ -78,7 +78,7 @@ class UserController extends Controller
                     'postcode' => $request->postcode,
                     'blocked' => $request->blocked,
                     'active' => $request->active,
-                    'password' => Hash::make($data['password']),
+                    'password' => Hash::make($password),
                     'role_id' => 3,
                 ]
             );

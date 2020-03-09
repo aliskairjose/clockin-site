@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\WorkShift;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class WorkShift extends Controller
+class WorkShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,13 @@ class WorkShift extends Controller
      */
     public function index()
     {
-        //
+        $companies = Auth::user()->companies;
+        if ($companies->count() > 0) {
+            $company_id = $companies[0]->id;
+        }
+
+        $schedule = WorkShift::schedule($company_id);
+        return view('pages.schedule.index', compact('schedule'));
     }
 
     /**

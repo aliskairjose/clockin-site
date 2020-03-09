@@ -76,12 +76,4 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->belongsTo(Role::class);
     }
 
-    /**
-     * Retorna listado de usuarios tipo empresa
-     */
-    public function scopeUserCompany($query)
-    {
-        return $query->where('role_id', '=', '2')->get();
-    }
-
 }

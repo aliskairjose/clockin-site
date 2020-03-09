@@ -29,7 +29,7 @@ Route::group(['middleware' => ['verified']], function () {
 
     Route::resource('users', 'UserController');
     Route::resource('companies', 'CompanyController');
-    Route::resource('schedule', 'ClockRecordingController');
+    Route::resource('schedule', 'WorkShiftController');
 
 
 });
