@@ -52,5 +52,4 @@ Route::post('password/reset', 'Api\ResetPasswordController@reset')->name('passwo
     Route::post('clockrecordings','Api\ClockRecordingController@store');
     Route::put('clockrecordings/{id}','\Api\ClockRecordingController@update');
     Route::delete('clockrecordings/{id}', 'Api\ClockRecordingController@destroy');
-
 // });
