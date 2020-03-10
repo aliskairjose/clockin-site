@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Country;
 use App\Events\EmailChanged;
+use App\Events\NewEmployee;
+use App\Events\NewEmployeeEvent;
 use App\Http\Resources\CountryCollection;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -38,7 +40,7 @@ class UserController extends Controller
         if ($companies->count() > 0) {
             $data = $companies[0]->id;
             $company = Company::findOrFail($data);
-            $employees = $company->users;
+            $employees = $company->employees;
         }
 
         return view('pages.user.employees', compact('employees'));
@@ -87,8 +89,9 @@ class UserController extends Controller
         $companyId = Auth::user()->companies[0]->id;
         $user->companies()->attach($companyId);
 
-        return redirect('/home');
+        event(new NewEmployeeEvent($user));
 
+        return redirect('/home');
     }
 
     /**

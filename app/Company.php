@@ -14,7 +14,7 @@ class Company extends Model
     /**
      * Relacion mucho a muchos con Users
      */
-    public function users()
+    public function employees()
     {
         return $this->belongsToMany(User::class);
     }

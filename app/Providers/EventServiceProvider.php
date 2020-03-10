@@ -6,6 +6,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 // events
 use App\Events\EmailChanged;
+use App\Events\NewEmployee;
+use App\Events\NewEmployeeEvent;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Events\Registered;
@@ -15,6 +17,7 @@ use App\Listeners\SuccessfulLogin;
 use App\Listeners\LogVerifiedUser;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use App\Listeners\EmailChangeNotification;
+use App\Listeners\NewEmpoyeeNotification;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -35,6 +38,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         EmailChanged::class => [
             EmailChangeNotification::class
+        ],
+        NewEmployeeEvent::class => [
+            NewEmpoyeeNotification::class,
         ],
     ];
 

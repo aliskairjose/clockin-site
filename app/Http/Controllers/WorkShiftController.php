@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Http\Resources\WorkShiftCollection;
 use App\WorkShift;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,9 @@ class WorkShiftController extends Controller
             $company_id = $companies[0]->id;
         }
 
-        $schedule = WorkShift::schedule($company_id);
-        return view('pages.schedule.index', compact('schedule'));
+        $employees_id = Company::findOrFail($company_id)->employees->pluck('id');
+
+        return view('pages.schedule.index', compact('employees_id'));
     }
 
     /**

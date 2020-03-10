@@ -221,7 +221,7 @@ class CompanyController extends Controller
 
         try {
             $company = Company::findOrFail($id);
-            $data = $company->users;
+            $data = $company->employees;
         } catch (Exception $e) {
             return response()->json(
                 [
